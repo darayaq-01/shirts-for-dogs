@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 
 import DogList from './components/DogList';
 import getList from './api/getList';
+import Header from './components/Header';
 const Breed = lazy(() => import("./routes/Cards"))
 
 const Home = () => {
@@ -10,12 +11,13 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
   const [fullData, setFullData] = useState([]);
   const navigate = useNavigate()
+  const [pagina, setPagina] = useState(1)
 
-  useEffect(() => updateData(), []);
+  useEffect(() => updateData(), [pagina]);
 
-  const updateData = () => {
+  const updateData = (pagina) => {
     setLoading(true)
-    getList().then((data) => {
+    getList(pagina).then((data) => {
       setFullData(data);
     });
     setLoading(false)
@@ -30,19 +32,16 @@ const Home = () => {
   return (
     <div className='bg-gradient-to-r from-green-400 to-blue-500  grid'>
         <div className='w-3/4 my-auto ml-20'>
-          <h1 className='text-5xl font-bold my-10 text-white'>
-            Dogs also need t-shirts!
-          </h1>
-          <p className='text-white mb-10'>Some random nice pics!</p>
+          <Header/>
        
           <DogList fullData={fullData} loading={loading} navigateToBreed=
           {navigateToBreed}  />
 
           <div className='inline-flex m-3 '>
-            <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l'>
+          <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r' onClick={() => setPagina(pagina-1)}>
               Prev
             </button>
-            <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r'>
+            <button className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r' onClick={() => setPagina(pagina+1)}>
               Next
             </button>
           </div>
