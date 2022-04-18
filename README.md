@@ -1,5 +1,11 @@
 # Testing thedogapi.com API.
 
+## Stack
+
+* React
+* React-Router-DOM
+* Tailwindcss
+
 ## Basic functions:
 
 * Gallery of dogs
