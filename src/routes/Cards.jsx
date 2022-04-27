@@ -23,13 +23,15 @@ const Cards = () => {
   }
 
   return (
-      <div className='bg-gradient-to-r from-green-400 to-blue-500  grid'>
-        <div className='my3-3'>
+      <div className=''>
+        <div className=''>
           <Header />
         </div>
-        <div className='w-3/4 my-auto ml-20'>
-          <div className='max-w-sm p-5'>
-            <DogBreed className='m-4' breedDog={breedDog} />
+        <div className=''>
+          <div className="">
+            <div className="">
+            <DogBreed className='' breedDog={breedDog} />
+            </div>
           </div>
         </div>
       </div>

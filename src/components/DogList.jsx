@@ -3,29 +3,24 @@ const DogList = ({ fullData, loading, navigateToBreed }) => {
   if(loading) return <div>Loading... </div>
   
   return (
-    <>
-    <div className='bg-white'>
-      <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div className='grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
-
+    <div className="relative grid gap-2 sm:grid-cols-2 lg:grid-cols-4 justify-items-center py-5">
         {fullData && fullData.map((data) => (         
-          <div key={data.id} onClick={() => navigateToBreed(data.breedId)} className="group">
-            <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+          <div key={data.id} onClick={() => navigateToBreed(data.breedId)} className="grid justify-items-center m-2">
+          
+            <div className="p-1 m-2 transition duration-300 transform bg-gray-800 rounded shadow-2xl hover:scale-105 md:shadow-xl hover:shadow-2xl flex flex-col items-center">
               <img
                 src={data.url}
                 alt="dog"
-                className="w-full h-full object-center object-cover group-hover:opacity-75"
+                className="rounded-tl-lg rounded-tr-lg h-52"
               />
+             <div className="max-auto my-3 text-white">
+              <h2 className="text-lg">Breed: <span className="text-teal-800 font-mono bg-teal-100 p-1 m-2 inline rounded animate-pulse bg-gray-800">{data.name}</span></h2>
+             </div>
             </div>
-           <p className="mt-1 text-lg font-medium text-gray-900">Breed: {data.name}
-           </p>
-          </div>
-        ))}  
 
-        </div>
-      </div>
+          </div>
+        ))}
     </div>
-    </>
   );
 };
 
