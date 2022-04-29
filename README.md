@@ -1,5 +1,7 @@
 # Testing thedogapi.com API.
 
+* Check the app working: https://shirts-for-dogs.vercel.app
+
 ## Stack
 
 * React
